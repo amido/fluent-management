@@ -80,7 +80,8 @@ namespace Elastacloud.AzureManagement.Fluent.Commands.Parsers
                                      new GetSubscriberLocationsParser(document),
                                      new GetAggregateDeploymentStatusParser(document),
                                      new GetRoleStatusParser(document),
-                                     new GetHostedServicePropertiesParser(document)
+                                     new GetHostedServicePropertiesParser(document),
+                                     new GetSubscriptionOperationsParser(document)
                                  };
             foreach (BaseParser baseParser in parserList)
             {
@@ -125,6 +126,11 @@ namespace Elastacloud.AzureManagement.Fluent.Commands.Parsers
         /// </summary>
         public const string GetSubscriptionParser = "Subscription";
 
+        /// <summary>
+        /// The element for the GetSubscriptionOperationsParser response
+        /// </summary>
+        public const string GetSubscriptionOperationsParser = "SubscriptionOperationCollection";
+        
         /// <summary>
         /// The element for the GetSubscriberLocationsParser response
         /// </summary>
@@ -200,6 +206,11 @@ namespace Elastacloud.AzureManagement.Fluent.Commands.Parsers
         /// </summary>
         public const string ServiceManagementSchema =
             "http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration";
+        /// <summary>
+        /// The Service Management datacontract schema address
+        /// </summary>
+        public const string DataContractServiceManagementSchema =
+            "http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.ServiceManagement";
 
         #endregion
     }

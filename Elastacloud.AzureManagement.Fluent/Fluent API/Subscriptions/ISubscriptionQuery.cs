@@ -7,6 +7,7 @@
  * Email: info@elastacloud.com                                                                              *
  ************************************************************************************************************/
 
+using System;
 using System.Collections.Generic;
 using Elastacloud.AzureManagement.Fluent.Types;
 
@@ -28,5 +29,11 @@ namespace Elastacloud.AzureManagement.Fluent.Subscriptions
         /// </summary>
         /// <returns>A generic LocationInformation list containing the details of the location names and their monikers</returns>
         List<LocationInformation> GetSubscriberLocations();
+
+        /// <summary>
+        /// A list of service operations for a particular subscription
+        /// </summary>
+        /// <returns>A generic Operations list containing the operations against the subscription</returns>
+        List<SubscriptionOperation> GetOperations(DateTime startDate, DateTime endDate);
     }
 }

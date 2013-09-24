@@ -7,6 +7,7 @@
  * Email: info@elastacloud.com                                                                              *
  ************************************************************************************************************/
 
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Elastacloud.AzureManagement.Fluent.Commands.Subscriptions;
@@ -119,6 +120,21 @@ namespace Elastacloud.AzureManagement.Fluent.Subscriptions
 			subscriptionCommand.Execute();
 			return subscriptionCommand.Locations;
 		}
+
+        /// <summary>
+        /// Invoked when the user needs a list of operations
+        /// </summary>
+        /// <returns>Returns a list of operations</returns>
+        public List<SubscriptionOperation> GetOperations(DateTime startDate, DateTime endDate)
+        {
+            var subscriptionCommand = new GetSubscriptionOperationsCommand(startDate, endDate)
+            {
+                SubscriptionId = SubscriptionId,
+                Certificate = ManagementCertificate
+            };
+            subscriptionCommand.Execute();
+            return subscriptionCommand.Operations;
+        }
 
 		#endregion
 

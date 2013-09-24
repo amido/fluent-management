@@ -109,6 +109,7 @@
     <Compile Include="Commands\MobileServices\DeleteMobileServiceCommand.cs" />
     <Compile Include="Commands\MobileServices\GetSharedInstanceCountCommand.cs" />
     <Compile Include="Commands\Parsers\CheckCloudServiceNameAvailableParser.cs" />
+    <Compile Include="Commands\Parsers\GetSubscriptionOperationsParser.cs" />
     <Compile Include="Commands\Parsers\GetAllDisksParser.cs" />
     <Compile Include="Commands\Parsers\WebsiteMetricsParser.cs" />
     <Compile Include="Commands\Parsers\WebsiteServerFarmParser.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Commands\Services\CheckCloudServiceNameAvailableCommand.cs" />
     <Compile Include="Commands\SqlAzure\DeleteSqlFirewallRuleCommand.cs" />
     <Compile Include="Commands\SqlAzure\ListFirewallRulesCommand.cs" />
+    <Compile Include="Commands\Subscriptions\GetSubscriptionOperationsCommand.cs" />
     <Compile Include="Commands\Virtual Machines\AddLinuxVirtualMachineToDeploymentCommand.cs" />
     <Compile Include="Commands\Virtual Machines\GetVirtualDisksCommand.cs" />
     <Compile Include="Commands\Virtual Machines\GetVirtualMachineContextCommand.cs" />
@@ -238,6 +240,8 @@
     <Compile Include="Types\AttachedVM.cs" />
     <Compile Include="Types\CloudServiceStatus.cs" />
     <Compile Include="Types\ComputeMode.cs" />
+    <Compile Include="Types\OperationParameter.cs" />
+    <Compile Include="Types\SubscriptionOperation.cs" />
     <Compile Include="Types\Virtual Machines\KeyType.cs" />
     <Compile Include="Types\Virtual Machines\LinuxConfigurationSet.cs" />
     <Compile Include="Types\Virtual Machines\SSHKey.cs" />
