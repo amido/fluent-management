@@ -37,7 +37,9 @@ namespace Elastacloud.AzureManagement.Fluent.Commands.Parsers
                 var operation = new SubscriptionOperation()
                     {
                         OperationId = subscriptionOperation.Element(GetSchema() + "OperationId").Value,
-                        OperationName = subscriptionOperation.Element(GetSchema() + "OperationName").Value
+                        OperationName = subscriptionOperation.Element(GetSchema() + "OperationName").Value,
+                        OperationStartedTime = DateTime.Parse(subscriptionOperation.Element(GetSchema() + "OperationStartedTime").Value),
+                        OperationCompletedTime = DateTime.Parse(subscriptionOperation.Element(GetSchema() + "OperationCompletedTime").Value)
                     };
 
                 if (subscriptionOperation.Elements(GetSchema() + "OperationParameters") != null)
@@ -51,6 +53,28 @@ namespace Elastacloud.AzureManagement.Fluent.Commands.Parsers
                         }).ToList();
                     operation.OperationParameters = parameterList;
                 }
+
+                var operationCaller = subscriptionOperation.Elements(GetSchema() + "OperationCaller")
+                        .Select(xElement => new OperationCaller()
+                        {
+                            UsedServiceManagementApi = Boolean.Parse(xElement.Element(GetSchema() + "UsedServiceManagementApi").Value),
+                            UserEmailAddress = (string)xElement.Element(GetSchema() + "UserEmailAddress").Value,
+                            ClientIP = (string)xElement.Element(GetSchema() + "ClientIP").Value
+                        }).First();
+
+                operation.OperationCaller = operationCaller;
+
+
+                var operationStatus = subscriptionOperation.Elements(GetSchema() + "OperationStatus")
+                        .Select(xElement => new OperationStatus()
+                        {
+                            ID = (string)xElement.Element(GetSchema() + "ID").Value,
+                            Status = (string)xElement.Element(GetSchema() + "Status").Value,
+                            HttpStatusCode = int.Parse(xElement.Element(GetSchema() + "HttpStatusCode").Value),
+                        }).First();
+
+                operation.OperationStatus = operationStatus;
+
 
                 CommandResponse.Add(operation);
             }
